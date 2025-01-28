@@ -45,9 +45,7 @@ const Weather = () => {
         setCityName("")
     }
 
-    const handleSearch = (e) => {
-        e.preventDefault()
-
+    const handleSearch = () => {
         if (cityName.length > 0) {
             search(cityName);
             // console.log(cityName)
