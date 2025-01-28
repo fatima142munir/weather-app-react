@@ -22,7 +22,7 @@ const Weather = () => {
             const res = await fetch(URL);
             const data = await res.json();
             if (res.status === 200) {
-                
+
                 setLoader(false)
                 // console.log(data, cityName)
                 setWeatherData({
@@ -51,13 +51,13 @@ const Weather = () => {
             // console.log(cityName)
         } else {
             setShowError("Kindly enter a city name.");
-        }  
+        }
     };
 
 
     return (
         <>
-            <div className='text-white shadow-lg shadow-white/50 bg-linear-to-t from-sky-500 to-indigo-500 md:w-[30vw] md:h-[80vh] w-full h-[100vh] rounded-lg py-20 md:py-10 mx-auto md:my-[50px]'>
+            <div className='text-white shadow-lg shadow-white/50 bg-linear-to-t from-sky-500 to-indigo-500 md:w-[30vw] md:h-auto w-full h-[100vh] rounded-lg py-20 md:py-10 mx-auto md:my-[50px]'>
                 <h1 className='text-center p-5 text-4xl font-bold'>Weather App</h1>
                 <div className='sm:flex-row flex gap-3 flex-wrap justify-center p-5'>
                     <div>
@@ -72,7 +72,7 @@ const Weather = () => {
                 {loader && <p className='text-3xl text-center p-1'>Loading...</p>}
                 {/* {showError && <p className='text-3xl text-center p-1'>error..</p>} */}
                 <p className='text-3xl text-center p-1'>{showError}</p>
-                <div className='w-[150px] text-3xl m-auto text-center'>
+                {weatherData && <div className='w-[150px] text-3xl m-auto text-center'>
                     <div className='flex gap-2'>
                         <FaTemperatureLow className='w-[40px] h-[50px]' /> <p>{weatherData.temperature}</p>
                     </div>
@@ -86,7 +86,8 @@ const Weather = () => {
                         <FaLocationCrosshairs className='w-[40px] h-[50px]' /> <p>{weatherData.location}</p>
                     </div>
 
-                </div>
+                </div>}
+
             </div>
         </>
     )
